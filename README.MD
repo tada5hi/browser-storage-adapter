@@ -1,7 +1,7 @@
 [![npm version](https://badge.fury.io/js/browser-storage-adapter.svg)](https://badge.fury.io/js/browser-storage-adapter)
-[![Master Workflow](https://github.com/Tada5hi/browser-storage-adapter/workflows/main/badge.svg)](https://github.com/Tada5hi/browser-storage-adapter)
+[![CI](https://github.com/tada5hi/browser-storage-adapter/actions/workflows/main.yml/badge.svg)](https://github.com/tada5hi/browser-storage-adapter/actions/workflows/main.yml)
 
-# Browser Storage Adapter 🚀
+# Browser Storage Adapter 💾
 This is a library to save key-value pairs simultaneously to one or multiple storages (e.g. SessionStorage, LocalStorage, Cookie, ...).
 
 **Table of Contents**
