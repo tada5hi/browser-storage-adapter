@@ -1,6 +1,6 @@
 {
     "name": "browser-storage-adapter",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Browser storage adapter to crud 1-n different stores simultaneously",
     "author": {
         "name": "Peter Placzek",
