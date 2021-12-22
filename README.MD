@@ -23,9 +23,10 @@ which should be enabled. By default, all drivers are disabled, expect of the in-
 Besides, it is also possible to specify a custom `namespace`, so different instances of the BrowserStorageAdapter don't interfere with each other, when they use the same key.
 
 ```typescript
-import {BrowserStorageAdapter} from "./module";
+import {BrowserStorageAdapter} from "browser-storage-adapter";
+import {BrowserStorageAdapterOptions} from "./type";
 
-const warehouse = new BrowserStorageAdapter({
+const options: BrowserStorageAdapterOptions = {
     driver: {
         cookie: {
             path: '/',
@@ -34,7 +35,9 @@ const warehouse = new BrowserStorageAdapter({
         sessionStorage: true,
     },
     namespace: 'auth'
-});
+};
+
+const warehouse = new BrowserStorageAdapter(options);
 
 // Set a key-value pair for the following drivers:
 // cookie, localStorage & sessionStorage.
