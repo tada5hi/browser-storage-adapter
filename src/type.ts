@@ -9,20 +9,33 @@ import { CookieSerializeOptions } from 'cookie';
 import { BrowserStorageDriver } from './constants';
 
 export interface BrowserStorageAdapterOptions {
+    /**
+     * Specify a key prefix.
+     * e.g.
+     *  namespace: auth
+     *  key: token
+     *  keyWithNamespace: auth_token
+     */
     namespace?: string,
-    driver: {
+    /**
+     * Enable or disable some of the available drivers.
+     */
+    driver?: {
         localStorage?: boolean,
         sessionStorage?: boolean,
         cookie?: boolean | CookieSerializeOptions
     },
-    isServer: () => boolean,
+    /**
+     * Check if the application is
+     * server rendered.
+     */
+    isServer?: () => boolean,
 
     /**
      * Append serialized cookie.
      * @param value
      */
     setServerCookie?: (value: string) => void,
-    getServerCookie?: (key: string) => any,
     /**
      * Ger serialized cookie(s).
      */

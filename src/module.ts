@@ -18,6 +18,11 @@ export class BrowserStorageAdapter {
     protected state : Record<string, any> = {};
 
     constructor(options: BrowserStorageAdapterOptions) {
+        options.driver = options.driver || {};
+        if (typeof options.isServer === 'undefined') {
+            options.isServer = () => false;
+        }
+
         this.options = options;
 
         this.initState();
@@ -26,13 +31,13 @@ export class BrowserStorageAdapter {
     // ------------------------------------
 
     getKeyWithNamespace(key: string) : string {
-        let fullKey = '';
+        let keyWithNamespace = '';
 
         if (typeof this.options.namespace !== 'undefined') {
-            fullKey += `${this.options.namespace}_`;
+            keyWithNamespace += `${this.options.namespace}_`;
         }
 
-        return fullKey + key;
+        return keyWithNamespace + key;
     }
 
     // ------------------------------------
@@ -247,8 +252,8 @@ export class BrowserStorageAdapter {
             return;
         }
 
-        const fullKey = this.getKeyWithNamespace(key);
-        localStorage.removeItem(fullKey);
+        const keyWithNamespace = this.getKeyWithNamespace(key);
+        localStorage.removeItem(keyWithNamespace);
     }
 
     // ------------------------------------
@@ -269,9 +274,9 @@ export class BrowserStorageAdapter {
             return;
         }
 
-        const fullKey = this.getKeyWithNamespace(key);
+        const keyWithNamespace = this.getKeyWithNamespace(key);
 
-        sessionStorage.setItem(fullKey, encodeValue(value));
+        sessionStorage.setItem(keyWithNamespace, encodeValue(value));
     }
 
     getSessionStorageItem(key: string) {
@@ -282,9 +287,9 @@ export class BrowserStorageAdapter {
             return undefined;
         }
 
-        const fullKey = this.getKeyWithNamespace(key);
+        const keyWithNamespace = this.getKeyWithNamespace(key);
 
-        const value = sessionStorage.getItem(fullKey);
+        const value = sessionStorage.getItem(keyWithNamespace);
 
         return decodeValue(value);
     }
@@ -301,8 +306,8 @@ export class BrowserStorageAdapter {
             return;
         }
 
-        const fullKey = this.getKeyWithNamespace(key);
-        sessionStorage.removeItem(fullKey);
+        const keyWithNamespace = this.getKeyWithNamespace(key);
+        sessionStorage.removeItem(keyWithNamespace);
     }
 
     // ------------------------------------
@@ -329,7 +334,7 @@ export class BrowserStorageAdapter {
             return;
         }
 
-        const fullKey = this.getKeyWithNamespace(key);
+        const keyWithNamespace = this.getKeyWithNamespace(key);
         const options = <CookieSerializeOptions> ({
             ...(typeof this.options.driver.cookie === 'boolean' ? {} : this.options.driver.cookie),
         });
@@ -341,7 +346,7 @@ export class BrowserStorageAdapter {
             options.maxAge = -1;
         }
 
-        const serializedCookie = serializeCookie(fullKey, valueEncoded, options);
+        const serializedCookie = serializeCookie(keyWithNamespace, valueEncoded, options);
 
         const isServer = this.options.isServer();
         if (isServer) {
