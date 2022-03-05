@@ -5,7 +5,7 @@
  * view the LICENSE file that was distributed with this source code.
  */
 
-export enum BrowserStorageDriver {
+export enum Driver {
     LOCAL_STORAGE = 'localStorage',
     SESSION_STORAGE = 'sessionStorage',
     COOKIE = 'cookie',

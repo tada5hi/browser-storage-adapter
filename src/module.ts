@@ -6,18 +6,18 @@
  */
 
 import { CookieSerializeOptions, parse as parseCookie, serialize as serializeCookie } from 'cookie';
-import { BrowserStorageAdapterOptions, BrowserStorageDriverType } from './type';
+import { AdapterOptions, DriverType } from './type';
 import {
     decodeValue, encodeValue, isSet, isUnset,
 } from './utils';
-import { BrowserStorageDriver } from './constants';
+import { Driver } from './constants';
 
-export class BrowserStorageAdapter {
-    public readonly options: BrowserStorageAdapterOptions;
+export class Adapter {
+    public readonly options: AdapterOptions;
 
     protected state : Record<string, any> = {};
 
-    constructor(options: BrowserStorageAdapterOptions) {
+    constructor(options: AdapterOptions) {
         options.driver = options.driver || {};
         if (typeof options.isServer === 'undefined') {
             options.isServer = () => false;
@@ -167,13 +167,13 @@ export class BrowserStorageAdapter {
     // Browser Storage
     // ------------------------------------
 
-    getBrowserStorageItems(type: BrowserStorageDriverType) : Record<string, any> {
+    getBrowserStorageItems(type: DriverType) : Record<string, any> {
         let storage : any;
         switch (type) {
-            case BrowserStorageDriver.SESSION_STORAGE:
+            case Driver.SESSION_STORAGE:
                 storage = sessionStorage;
                 break;
-            case BrowserStorageDriver.LOCAL_STORAGE:
+            case Driver.LOCAL_STORAGE:
                 storage = localStorage;
                 break;
         }
@@ -241,7 +241,7 @@ export class BrowserStorageAdapter {
     }
 
     getLocalStorageItems() : any {
-        return this.getBrowserStorageItems(BrowserStorageDriver.LOCAL_STORAGE);
+        return this.getBrowserStorageItems(Driver.LOCAL_STORAGE);
     }
 
     removeLocalStorageItem(key: string) {
@@ -295,7 +295,7 @@ export class BrowserStorageAdapter {
     }
 
     getSessionStorageItems() : any {
-        return this.getBrowserStorageItems(BrowserStorageDriver.SESSION_STORAGE);
+        return this.getBrowserStorageItems(Driver.SESSION_STORAGE);
     }
 
     removeSessionStorageItem(key: string) {

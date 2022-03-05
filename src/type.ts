@@ -6,9 +6,9 @@
  */
 
 import { CookieSerializeOptions } from 'cookie';
-import { BrowserStorageDriver } from './constants';
+import { Driver } from './constants';
 
-export interface BrowserStorageAdapterOptions {
+export interface AdapterOptions {
     /**
      * Specify a key prefix.
      * e.g.
@@ -42,4 +42,4 @@ export interface BrowserStorageAdapterOptions {
     getServerCookies?: () => string
 }
 
-export type BrowserStorageDriverType = `${BrowserStorageDriver}`;
+export type DriverType = `${Driver}`;
