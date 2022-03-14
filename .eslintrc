@@ -18,6 +18,7 @@
         "no-continue": "off",
         "no-use-before-define": "off",
         "no-nested-ternary": "off",
+        "no-shadow": "off",
 
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/no-use-before-define": "off"
