@@ -34,7 +34,7 @@
     "devDependencies": {
         "@tada5hi/eslint-config-typescript": "^1.0.4",
         "@types/cookie": "^0.5.1",
-        "@types/node": "^18.0.6",
+        "@types/node": "^18.7.9",
         "cross-env": "^7.0.3",
         "eslint": "^8.20.0",
         "np": "^7.6.2",
