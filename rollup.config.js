@@ -22,7 +22,7 @@ export default [
 
         // Specify here external modules which you don't want to include in your bundle (for instance: 'lodash', 'moment' etc.)
         // https://rollupjs.org/guide/en/#external
-        external: [],
+        external: ['cookie'],
 
         plugins: [
             // Allows node_modules resolution
@@ -47,9 +47,39 @@ export default [
             }, {
                 file: pkg.module,
                 format: 'esm'
-            },
+            }
+        ]
+    },
+    {
+        input: './src/index.ts',
+
+        // Specify here external modules which you don't want to include in your bundle (for instance: 'lodash', 'moment' etc.)
+        // https://rollupjs.org/guide/en/#external
+        external: [],
+
+        plugins: [
+            // Allows node_modules resolution
+            resolve({ extensions}),
+
+            // Allow bundling cjs modules. Rollup doesn't understand cjs
+            commonjs(),
+
+            // Compile TypeScript/JavaScript files
+            babel({
+                extensions,
+                babelHelpers: 'bundled',
+                include: [
+                    'src/**/*'
+                ],
+            }),
+        ],
+        output: [
             {
                 file: pkg.browser,
+                format: 'esm',
+            },
+            {
+                file: pkg.unpkg,
                 format: 'iife',
                 name,
 
