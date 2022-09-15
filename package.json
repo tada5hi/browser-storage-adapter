@@ -49,7 +49,7 @@
         "@rollup/plugin-node-resolve": "^13.3.0",
         "rollup": "^2.78.1",
         "rimraf": "^3.0.2",
-        "@tada5hi/eslint-config-typescript": "^1.0.5",
+        "@tada5hi/eslint-config-typescript": "^1.0.7",
         "@types/cookie": "^0.5.1",
         "@types/node": "^18.7.9",
         "cross-env": "^7.0.3",
