@@ -18,7 +18,7 @@ export interface AdapterOptions {
      */
     namespace?: string,
     /**
-     * Enable or disable some of the available drivers.
+     * Enable or disable some available drivers.
      */
     driver?: {
         localStorage?: boolean,
@@ -26,13 +26,28 @@ export interface AdapterOptions {
         cookie?: boolean | CookieSerializeOptions
     },
     /**
-     * Check if the application is
-     * server rendered.
+     * Check if the application is server rendered.
      */
     isServer?: () => boolean,
 
     /**
+     * Set cookie.
+     *
+     * @param key
+     * @param value
+     */
+    setCookie?: (key: string, value: unknown) => void,
+
+    /**
+     * Get cookie.
+     *
+     * @param key
+     */
+    getCookie?: (key: string) => unknown,
+
+    /**
      * Append serialized cookie.
+     *
      * @param value
      */
     setServerCookie?: (value: string) => void,

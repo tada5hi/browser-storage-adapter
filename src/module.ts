@@ -334,6 +334,11 @@ export class Adapter {
             return;
         }
 
+        if (typeof this.options.setCookie === 'function') {
+            this.options.setCookie(key, value);
+            return;
+        }
+
         const keyWithNamespace = this.getKeyWithNamespace(key);
         const options = <CookieSerializeOptions> ({
             ...(typeof this.options.driver.cookie === 'boolean' ? {} : this.options.driver.cookie),
@@ -362,6 +367,10 @@ export class Adapter {
             !this.options.driver.cookie
         ) {
             return undefined;
+        }
+
+        if (typeof this.options.getCookie === 'function') {
+            return this.options.getCookie(key);
         }
 
         const keyFull = this.getKeyWithNamespace(key);
