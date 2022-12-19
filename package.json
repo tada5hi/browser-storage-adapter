@@ -51,7 +51,7 @@
         "rimraf": "^3.0.2",
         "@tada5hi/eslint-config-typescript": "^1.0.10",
         "@types/cookie": "^0.5.1",
-        "@types/node": "^18.11.9",
+        "@types/node": "^18.11.17",
         "cross-env": "^7.0.3",
         "eslint": "^8.27.0",
         "np": "^7.6.2",
