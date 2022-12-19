@@ -47,7 +47,7 @@
         "@rollup/plugin-babel": "^6.0.2",
         "@rollup/plugin-commonjs": "^23.0.2",
         "@rollup/plugin-node-resolve": "^15.0.1",
-        "rollup": "^2.79.1",
+        "rollup": "^3.7.5",
         "rimraf": "^3.0.2",
         "@tada5hi/eslint-config-typescript": "^1.0.10",
         "@types/cookie": "^0.5.1",
