@@ -12,6 +12,7 @@ This is a library to save key-value pairs to one or multiple storages (e.g. Sess
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Options](#options)
 
 ## Installation
 
@@ -27,7 +28,7 @@ which should be enabled. By default, all drivers are disabled, expect of the in-
 Besides, it is also possible to specify a custom `namespace`, so different instances of the Adapter don't interfere with each other, when they use the same key.
 
 ```typescript
-import { Adapter } from "browser-storage-adapter";
+import { Adapter } from 'browser-storage-adapter';
 
 const warehouse = new Adapter({
     driver: {
@@ -52,3 +53,60 @@ const token = warehouse.get('token');
 console.log(token);
 // xxx
 ```
+
+## Options
+
+The Adapter accepts an `OptionsInput` object as input parameter, to modify the default behaviour.
+
+````typescript
+import { CookieSerializeOptions } from 'cookie';
+
+declare type OptionsInput = {
+    /**
+     * Specify a key prefix.
+     * e.g.
+     *  namespace: auth
+     *  key: token
+     *  keyWithNamespace: auth_token
+     */
+    namespace?: string,
+    /**
+     * Enable or disable some available drivers.
+     */
+    driver?: {
+        localStorage?: boolean,
+        sessionStorage?: boolean,
+        cookie?: boolean | CookieSerializeOptions
+    },
+    /**
+     * Check if the application is server rendered.
+     */
+    isServer?: () => boolean,
+
+    /**
+     * Set cookie.
+     *
+     * @param key
+     * @param value
+     */
+    setCookie?: (key: string, value: unknown) => void,
+
+    /**
+     * Get cookie.
+     *
+     * @param key
+     */
+    getCookie?: (key: string) => unknown,
+
+    /**
+     * Append serialized cookie.
+     *
+     * @param value
+     */
+    setServerCookie?: (value: string) => void,
+    /**
+     * Ger serialized cookie(s).
+     */
+    getServerCookies?: () => string
+}
+````

@@ -6,7 +6,7 @@
  */
 
 import { CookieSerializeOptions, parse as parseCookie, serialize as serializeCookie } from 'cookie';
-import { DriverType, Options, OptionsInput } from './type';
+import { Options, OptionsInput } from './type';
 import {
     buildOptions,
     decodeValue,
@@ -19,10 +19,13 @@ import { Driver } from './constants';
 export class Adapter {
     public readonly options: Options;
 
-    protected state : Record<string, any> = {};
+    protected state : Record<string, any>;
+
+    // ------------------------------------
 
     constructor(options: OptionsInput) {
         this.options = buildOptions(options);
+        this.state = {};
 
         this.initState();
     }
@@ -166,7 +169,7 @@ export class Adapter {
     // Browser Storage
     // ------------------------------------
 
-    getBrowserStorageItems(type: DriverType) : Record<string, any> {
+    getBrowserStorageItems(type: `${Driver}`) : Record<string, any> {
         let storage : any;
         switch (type) {
             case Driver.SESSION_STORAGE:

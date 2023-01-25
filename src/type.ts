@@ -6,9 +6,8 @@
  */
 
 import { CookieSerializeOptions } from 'cookie';
-import { Driver } from './constants';
 
-export interface Options {
+export type Options = {
     /**
      * Specify a key prefix.
      * e.g.
@@ -55,8 +54,14 @@ export interface Options {
      * Ger serialized cookie(s).
      */
     getServerCookies?: () => string
-}
-
-export type DriverType = `${Driver}`;
+};
 
 export type OptionsInput = Partial<Options>;
+
+/**
+ * This is an alias for the OptionsInput type.
+ * Will be removed in v2.0.0+
+ *
+ * @deprecated
+ */
+export type AdapterOptions = OptionsInput;
