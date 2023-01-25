@@ -57,10 +57,13 @@ export default [
             {
                 file: pkg.main,
                 format: 'cjs',
+                footer: 'module.exports = Object.assign(exports.default, exports);',
+                exports: 'named',
                 sourcemap: true
             }, {
                 file: pkg.module,
                 format: 'esm',
+                exports: 'named',
                 sourcemap: true
             }
         ]

@@ -5,9 +5,15 @@ name: CI
 
 on:
     push:
-        branches: [ master ]
+        branches: [master, next, beta, alpha]
     pull_request:
-        branches: [ master ]
+        branches: [master, next, beta, alpha]
+
+permissions:
+    packages: write
+    contents: write
+    issues: write
+    pull-requests: write
 
 jobs:
     build:
@@ -26,7 +32,21 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
 
-            - name: Build and install packages
+            - name: Install
               run: |
                 npm ci
+
+            - name: Build
+              run: |
                 npm run build
+
+            - name: Release
+              id: semantic
+              uses: cycjimmy/semantic-release-action@v3
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+              with:
+                  extra_plugins: |
+                      @semantic-release/changelog
+                      @semantic-release/git

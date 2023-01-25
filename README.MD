@@ -1,7 +1,11 @@
+# Browser Storage Adapter 💾
+
 [![npm version](https://badge.fury.io/js/browser-storage-adapter.svg)](https://badge.fury.io/js/browser-storage-adapter)
 [![CI](https://github.com/tada5hi/browser-storage-adapter/actions/workflows/main.yml/badge.svg)](https://github.com/tada5hi/browser-storage-adapter/actions/workflows/main.yml)
+[![Known Vulnerabilities](https://snyk.io/test/github/Tada5hi/browser-storage-adapter/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Tada5hi/browser-storage-adapter?targetFile=package.json)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-# Browser Storage Adapter 💾
+
 This is a library to save key-value pairs to one or multiple storages (e.g. SessionStorage, LocalStorage, Cookie, ...).
 
 **Table of Contents**
@@ -14,13 +18,6 @@ This is a library to save key-value pairs to one or multiple storages (e.g. Sess
 ```bash
 npm install browser-storage-adapter --save
 ```
-
----
-**Important NOTE**
-
-The `README.md` file is under construction ☂ at the moment. So please stay patient or contribute to it, till it covers all parts ⭐.
-
----
 
 ## Usage
 
