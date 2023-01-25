@@ -1,30 +1,18 @@
 {
+    "extends": "@tada5hi/tsconfig",
     "compilerOptions": {
-        "allowSyntheticDefaultImports": true,
-        "declarationDir": "dist/types",
-        "declaration": true,
-        "strict": true,
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
+        "declarationDir": "dist",
         "lib": [
             "ESNext",
             "dom"
         ],
         "module": "ESNext",
-        "moduleResolution": "node",
-        "newLine": "LF",
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": false,
-        "noUnusedParameters": false,
-        "noUnusedLocals": true,
-        "outDir": "dist",
-        "sourceMap": true,
-        "strictNullChecks": false,
-        "target": "ESNext"
+        "target": "ESNext",
+
+        "noUncheckedIndexedAccess": false,
+        "noPropertyAccessFromIndexSignature": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false
     },
     "include": [
         "src/**/*.ts"

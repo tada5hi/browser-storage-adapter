@@ -5,6 +5,8 @@
  * view the LICENSE file that was distributed with this source code.
  */
 
+import { Options, OptionsInput } from './type';
+
 export const isUnset = (o: any) => typeof o === 'undefined' || o === null;
 export const isSet = (o: any) => !isUnset(o);
 
@@ -27,4 +29,12 @@ export function decodeValue(val: any) {
 
     // Return as is
     return val;
+}
+
+export function buildOptions(input: OptionsInput) : Options {
+    return {
+        ...input,
+        driver: input.driver || {},
+        isServer: input.isServer || (() => false),
+    };
 }

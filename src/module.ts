@@ -6,24 +6,23 @@
  */
 
 import { CookieSerializeOptions, parse as parseCookie, serialize as serializeCookie } from 'cookie';
-import { AdapterOptions, DriverType } from './type';
+import { DriverType, Options, OptionsInput } from './type';
 import {
-    decodeValue, encodeValue, isSet, isUnset,
+    buildOptions,
+    decodeValue,
+    encodeValue,
+    isSet,
+    isUnset,
 } from './utils';
 import { Driver } from './constants';
 
 export class Adapter {
-    public readonly options: AdapterOptions;
+    public readonly options: Options;
 
     protected state : Record<string, any> = {};
 
-    constructor(options: AdapterOptions) {
-        options.driver = options.driver || {};
-        if (typeof options.isServer === 'undefined') {
-            options.isServer = () => false;
-        }
-
-        this.options = options;
+    constructor(options: OptionsInput) {
+        this.options = buildOptions(options);
 
         this.initState();
     }
@@ -320,10 +319,10 @@ export class Adapter {
             (this.options.getServerCookies ? this.options.getServerCookies() : '') :
             document.cookie;
 
-        const items : {[key: string] : any} = decodeValue(parseCookie(cookieStr || '') || {});
-        // eslint-disable-next-line no-restricted-syntax
-        for (const key in items) {
-            items[key] = decodeValue(decodeURIComponent(items[key]));
+        const items : Record<string, any> = decodeValue(parseCookie(cookieStr || '') || {});
+        const keys = Object.keys(items);
+        for (let i = 0; i < keys.length; i++) {
+            items[keys[i]] = decodeValue(decodeURIComponent(items[keys[i]]));
         }
 
         return items;
@@ -355,7 +354,9 @@ export class Adapter {
 
         const isServer = this.options.isServer();
         if (isServer) {
-            this.options.setServerCookie(serializedCookie);
+            if (typeof this.options.setServerCookie !== 'undefined') {
+                this.options.setServerCookie(serializedCookie);
+            }
         } else if (this.options.setServerCookie) {
             // Set in browser
             document.cookie = serializedCookie;

@@ -8,7 +8,7 @@
 import { CookieSerializeOptions } from 'cookie';
 import { Driver } from './constants';
 
-export interface AdapterOptions {
+export interface Options {
     /**
      * Specify a key prefix.
      * e.g.
@@ -20,7 +20,7 @@ export interface AdapterOptions {
     /**
      * Enable or disable some available drivers.
      */
-    driver?: {
+    driver: {
         localStorage?: boolean,
         sessionStorage?: boolean,
         cookie?: boolean | CookieSerializeOptions
@@ -28,7 +28,7 @@ export interface AdapterOptions {
     /**
      * Check if the application is server rendered.
      */
-    isServer?: () => boolean,
+    isServer: () => boolean,
 
     /**
      * Set cookie.
@@ -58,3 +58,5 @@ export interface AdapterOptions {
 }
 
 export type DriverType = `${Driver}`;
+
+export type OptionsInput = Partial<Options>;
