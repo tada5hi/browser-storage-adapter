@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/tada5hi/browser-storage-adapter/compare/v1.1.0...v1.1.1) (2023-01-25)
+
+
+### Bug Fixes
+
+* backported AdapterOptions type + added options to README ([0e48f86](https://github.com/tada5hi/browser-storage-adapter/commit/0e48f86bcda62e865cd6003103c027589e32170b))
+
 # [1.1.0](https://github.com/tada5hi/browser-storage-adapter/compare/v1.0.3...v1.1.0) (2023-01-25)
 
 
