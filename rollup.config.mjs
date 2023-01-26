@@ -63,7 +63,6 @@ export default [
             }, {
                 file: pkg.module,
                 format: 'esm',
-                exports: 'named',
                 sourcemap: true
             }
         ]

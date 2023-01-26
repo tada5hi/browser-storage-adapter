@@ -5,7 +5,7 @@
  * view the LICENSE file that was distributed with this source code.
  */
 
-import { CookieSerializeOptions, parse as parseCookie, serialize as serializeCookie } from 'cookie';
+import { CookieSerializeOptions, parse as parseCookie, serialize as serializeCookie } from 'cookie-es';
 import { Options, OptionsInput } from './type';
 import {
     buildOptions,

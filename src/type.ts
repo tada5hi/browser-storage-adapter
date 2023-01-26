@@ -5,7 +5,7 @@
  * view the LICENSE file that was distributed with this source code.
  */
 
-import { CookieSerializeOptions } from 'cookie';
+import { CookieSerializeOptions } from 'cookie-es';
 
 export type Options = {
     /**
