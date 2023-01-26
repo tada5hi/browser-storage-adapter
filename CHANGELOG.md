@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/tada5hi/browser-storage-adapter/compare/v1.1.1...v1.1.2) (2023-01-26)
+
+
+### Bug Fixes
+
+* **deps:** replaced cookie with cookie-es for named imports ([f9eb4fc](https://github.com/tada5hi/browser-storage-adapter/commit/f9eb4fc1d34025a435aefcc1617a9261d87e026d))
+
 ## [1.1.1](https://github.com/tada5hi/browser-storage-adapter/compare/v1.1.0...v1.1.1) (2023-01-25)
 
 
